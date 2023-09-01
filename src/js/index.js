@@ -15,6 +15,8 @@ function SimpleCounter(props) {
 			<div className="calendar">
 				<i className="far fa-clock" />
 			</div>
+			<div className="four">{props.digitSix % 10}</div>
+			<div className="four">{props.digitFive % 10}</div>
 			<div className="four">{props.digitFour % 10}</div>
 			<div className="three">{props.digitThree % 10}</div>
 			<div className="two">{props.digitTwo % 10}</div>
@@ -24,6 +26,8 @@ function SimpleCounter(props) {
 }
 
 SimpleCounter.propTypes = {
+	digitSix: PropTypes.number,
+	digitFive: PropTypes.number,
 	digitFour: PropTypes.number,
 	digitThree: PropTypes.number,
 	digitTwo: PropTypes.number,
@@ -32,6 +36,8 @@ SimpleCounter.propTypes = {
 
 let counter = 0;
 setInterval(function() {
+	const six = Math.floor(counter / 1000000);
+	const five = Math.floor(counter / 10000);
 	const four = Math.floor(counter / 10000);
 	const three = Math.floor(counter / 1000);
 	const two = Math.floor(counter / 100);
@@ -45,6 +51,8 @@ setInterval(function() {
 			digitTwo={two}
 			digitThree={three}
 			digitFour={four}
+			digitFive={five}
+			digitSix={six}
 		/>,
 		document.querySelector("#app")
 	); //diq 02.04.2020
